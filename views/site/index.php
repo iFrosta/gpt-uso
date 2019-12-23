@@ -3,49 +3,60 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
-?>
+
+use yii\helpers\Html;; ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>Добро пожаловать!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">Вы находитесь на портале ознакомления и тестирования работников.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <p class="lead">Пожалуйста, авторизуйтесь или зарегестрируйтесь.</p>
+
     </div>
 
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <div class="col-lg-3">
+                <h2>Новости</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Раздел, в котором отображаются новые распоряжения, телеграммы, приказы и письма,
+                    подлежащие ознакомлению</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                <p>
+                    <?= Html::a('Перейти', ['/user/index'], ['class' => 'btn btn-success']) ?>
+                </p>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <div class="col-lg-3">
+                <h2>Инструктажи и проверка знаний</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>В данном разделе работник видит дату проведения следующего повтороного инструктажа,
+                а также, после ознакомления прилегающей информации, сможет пройти тестирование</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <p>
+                    <?= Html::a('Перейти', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <div class="col-lg-3">
+                <h2>Документация</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>В данном разделе представлены все документы сопряжённые с занимаемой должностью работника</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <p>
+                    <?= Html::a('Перейти', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+            <div class="col-lg-3">
+                <h2>Технические занятия</h2>
+
+                <p>1 раз в квартал, работнику будет представлена презентация по ПТЭ, ИСИ, ИДП, местной инструкции
+                    и после ознакомления, возможность пройти тестирование</p>
+
+                <p>
+                    <?= Html::a('Перейти', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
             </div>
         </div>
 
