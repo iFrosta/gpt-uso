@@ -22,11 +22,10 @@ use yii\helpers\Html;; ?>
             <div class="col-lg-3">
                 <h2>Новости</h2>
 
-                <p>Раздел, в котором отображаются новые распоряжения, телеграммы, приказы и письма,
-                    подлежащие ознакомлению</p>
+                <p>Раздел, в котором отображаются новые события</p>
 
                 <p>
-                    <?= Html::a('Перейти', ['/user/index'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Перейти', ['/activity/index'], ['class' => 'btn btn-success']) ?>
                 </p>
             </div>
             <div class="col-lg-3">

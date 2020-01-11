@@ -4,6 +4,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use yii\base\Exception;
@@ -28,10 +29,17 @@ use yii\base\Exception;
  * @property int $date_receipt
  * @property string $status
  *
+ * @property-read Position $position
+ *
  * @property-write $password -> setPassword()
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    public function behaviors()
+    {
+        return [TimestampBehavior::class,];
+    }
+    
     public function attributeLabels()
     {
         return [
@@ -103,5 +111,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function setPassword($password)
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    }
+
+    public function getPosition()
+    {
+        return $this->hasOne(Position::class, ['id' => 'position_id']);
     }
 }

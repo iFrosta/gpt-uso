@@ -7,8 +7,15 @@ use Yii;
 use yii\base\Exception;
 use yii\base\Model;
 
+/**
+ * @property mixed id
+ */
 class SignupForm extends Model
 {
+    /**
+     * @var int Идентификатор работника в БД
+     */
+    public $id;
     /**
      * @var string Логин для создания пользователя
      */
@@ -21,13 +28,33 @@ class SignupForm extends Model
      * @var int код, без которого нельзя зарегистрироваться
      */
     public $special_cod;
-
+    /**
+     * @var string Имя работника
+     */
     public $first_name;
+    /**
+     * @var string Фамилия работника
+     */
     public $last_name;
+    /**
+     * @var string Отчество работника
+     */
     public $third_name;
+    /**
+     * @var int Табельный номер работника
+     */
     public $telny_number;
+    /**
+     * @var string Должность работника
+     */
     public $position_id;
+    /**
+     * @var int Дата рождения работника
+     */
     public $date_birth;
+    /**
+     * @var int Дата устройства работника
+     */
     public $date_receipt;
 
     /**
@@ -81,8 +108,8 @@ class SignupForm extends Model
             $user = new User([
                 'username' => $this->username,
                 'access_token' => "{$this->username}-token",
-                'created_at' => time(),
-                'updated_at' => time(),
+//                'created_at' => time(),
+//                'updated_at' => time(),
                 'first_name' => $this->first_name,
                 'last_name' => $this->last_name,
                 'third_name' => $this->third_name,
@@ -103,7 +130,9 @@ class SignupForm extends Model
 
                 $auth->assign($role, $user->id);
 
-                return Yii::$app->user->login($user);
+//                return Yii::$app->user->login($user);
+//                return "Регистрация прошла успешно, обновите страницу и войдите в личный кабинет";
+                return Yii::$app->runAction('user/index');
             }
         }
 

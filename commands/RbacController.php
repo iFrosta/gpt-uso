@@ -12,11 +12,32 @@ class RbacController extends Controller
     public function actionInit()
     {
         $auth = Yii::$app->authManager;
-        $userRole = $auth->createRole('user');
-        $userRole->description = 'Подчинённый';
-        $auth->add($userRole);
 
-        $auth->assign($userRole, 2);
+        /**
+         *
+         * Создание ролей пользователей
+         *
+         */
+        // Пользователь
+        $roleUser = $auth->createRole('user');
+        $roleUser->description = 'Обычный пользователь сайта';
+
+        $auth->add($roleUser);
+
+        // Менеджер
+        $roleAdmin = $auth->createRole('admin');
+        $roleAdmin->description = 'Администратор сайта';
+
+        $auth->add($roleAdmin);
+        $auth->addChild($roleAdmin, $roleUser); // Менеджер наследует права Пользователя
+
+        /**
+         *
+         * Установка ролей на пользователей
+         *
+         */
+        $auth->assign($roleAdmin, 1);
+        $auth->assign($roleUser, 2);
     }
 
 }
