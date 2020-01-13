@@ -37,6 +37,9 @@ class UserController extends Controller
         $query = User::find();
         $provider = new ActiveDataProvider([
             'query' => $query,
+//            'pagination' => [
+//                'validatePage' => false,
+//            ],
         ]);
 
         return $this->render('index', [
@@ -51,23 +54,23 @@ class UserController extends Controller
      */
     public function actionView(int $id)
     {
-        $item = User::findOne($id);
-
         return $this->render('view', [
-            'model' => $item,
+            'model' => $this->findModel($id),
         ]);
-
-//        return $this->render('view', [
-//            'model' => $this->findModel($id),
-//        ]);
     }
 
     public function actionCreate()
     {
         $model = new SignupForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->register()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $user = $model->register();
+            if ($user) {
+                return $this->redirect(['view', 'id' => $user->id]);
+            } else {
+                return false;
+            }
+
         }
 
         return $this->render('create', [
@@ -75,7 +78,13 @@ class UserController extends Controller
         ]);
     }
 
-    
+    public function actionDelete(int $id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
     protected function findModel($id)
     {
         if (($model = User::findOne($id)) !== null) {

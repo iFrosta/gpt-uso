@@ -7,9 +7,7 @@ use Yii;
 use yii\base\Exception;
 use yii\base\Model;
 
-/**
- * @property mixed id
- */
+
 class SignupForm extends Model
 {
     /**
@@ -97,8 +95,7 @@ class SignupForm extends Model
 
     /**
      * Попытка регистрации пользователя
-     * @return bool
-     * @throws Exception
+     * @return User|null
      * @throws \Exception
      */
     public function register()
@@ -130,14 +127,14 @@ class SignupForm extends Model
 
                 $auth->assign($role, $user->id);
 
-//                return Yii::$app->user->login($user);
+                return $user;
 //                return "Регистрация прошла успешно, обновите страницу и войдите в личный кабинет";
-                return Yii::$app->runAction('user/index');
+//                return Yii::$app->runAction('user/index');
             }
         }
 
         // вернем false, если не прошла валидация
-        return false;
+        return null;
     }
 
     public function checkCod($attr) // special_cod
