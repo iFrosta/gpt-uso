@@ -82,11 +82,11 @@ class SignupForm extends Model
     public function rules()
     {
         return [
+            [['username'], 'unique', 'targetClass' => User::class, 'targetAttribute' => 'username'],
             [['username', 'password', 'first_name', 'last_name', 'third_name', 'telny_number',
                 'position_id', 'date_birth', 'date_receipt', 'special_cod'], 'required'],
             [['username', 'password', 'first_name', 'last_name', 'third_name', 'position_id'], 'string'],
             [['special_cod', 'telny_number'], 'integer'],
-            [['username'], 'unique', 'targetClass' => User::class, 'targetAttribute' => 'username'],
             [['username'], 'string', 'min' => 3],
             [['password'], 'string', 'min' => 6, 'max' => 20],
             [['special_cod'], 'checkCod'],
@@ -128,7 +128,6 @@ class SignupForm extends Model
                 $auth->assign($role, $user->id);
 
                 return $user;
-//                return "Регистрация прошла успешно, обновите страницу и войдите в личный кабинет";
 //                return Yii::$app->runAction('user/index');
             }
         }

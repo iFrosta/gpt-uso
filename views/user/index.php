@@ -35,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'header' => 'Порядковый номер',
     ],
     'id',
-    'first_name',
     'last_name',
+    'first_name',
     'third_name',
     'telny_number',
     [

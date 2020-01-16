@@ -2,9 +2,10 @@
 
 /**
  * @var $this yii\web\View
- * @var $model \app\models\Activity
+ * @var $model Activity
  */
 
+use app\models\Activity;
 use yii\helpers\Html;
 
 ?>

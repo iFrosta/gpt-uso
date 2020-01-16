@@ -61,7 +61,7 @@ use yii\widgets\DetailView;
         'description',
 //        'repeat:boolean', // Yii::$app->formatter->asBoolean(...)
 //        'blocked:boolean',
-        'created_at:date',
-        'updated_at:date',
+        'created_at:datetime',
+        'updated_at:datetime',
     ],
 ]); ?>

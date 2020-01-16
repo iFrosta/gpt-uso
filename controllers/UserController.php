@@ -6,6 +6,7 @@ namespace app\controllers;
 
 use app\models\Activity;
 use app\models\forms\SignupForm;
+use app\models\forms\UpdateUserForm;
 use app\models\Position;
 use app\models\User;
 use Yii;
@@ -78,12 +79,35 @@ class UserController extends Controller
         ]);
     }
 
+    public function actionUpdate(int $id = null)
+    {
+        $item = $id ? User::findOne($id) : new User([
+            'id' => Yii::$app->user->id,
+        ]);
+
+        // обновлять записи может только создатель или менеджер
+        if (Yii::$app->user->can('admin') || $item->id == Yii::$app->user->id) {
+            if ($item->load(Yii::$app->request->post()) && $item->validate()) {
+                if ($item->save()) {
+                    return $this->redirect(['user/view', 'id' => $item->id]);
+                }
+            }
+
+            return $this->render('update', [
+                'model' => $item,
+            ]);
+        } else {
+            throw new NotFoundHttpException();
+        }
+    }
+
     public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
+
 
     protected function findModel($id)
     {

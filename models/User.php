@@ -69,7 +69,6 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function findIdentity($id)
     {
-//      select * from users where id = $id
         return self::findOne(['id' => $id]);
     }
 

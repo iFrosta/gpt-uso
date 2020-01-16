@@ -5,9 +5,11 @@ namespace app\controllers;
 
 
 use app\models\Activity;
+use Throwable;
 use Yii;
 use yii\caching\DbDependency;
 use yii\data\ActiveDataProvider;
+use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
 use yii\filters\PageCache;
 use yii\web\Controller;
@@ -151,6 +153,8 @@ class ActivityController extends Controller
      *
      * @return string
      * @throws NotFoundHttpException
+     * @throws Throwable
+     * @throws StaleObjectException
      */
     public function actionDelete(int $id)
     {
