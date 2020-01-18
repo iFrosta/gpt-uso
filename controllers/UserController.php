@@ -6,7 +6,6 @@ namespace app\controllers;
 
 use app\models\Activity;
 use app\models\forms\SignupForm;
-use app\models\forms\UpdateUserForm;
 use app\models\Position;
 use app\models\User;
 use Yii;
@@ -38,9 +37,10 @@ class UserController extends Controller
         $query = User::find();
         $provider = new ActiveDataProvider([
             'query' => $query,
-//            'pagination' => [
+            'pagination' => [
 //                'validatePage' => false,
-//            ],
+                'pageSize' => 10,
+            ],
         ]);
 
         return $this->render('index', [
@@ -68,10 +68,7 @@ class UserController extends Controller
             $user = $model->register();
             if ($user) {
                 return $this->redirect(['view', 'id' => $user->id]);
-            } else {
-                return false;
             }
-
         }
 
         return $this->render('create', [

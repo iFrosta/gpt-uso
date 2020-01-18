@@ -89,6 +89,7 @@ class SignupForm extends Model
             [['special_cod', 'telny_number'], 'integer'],
             [['username'], 'string', 'min' => 3],
             [['password'], 'string', 'min' => 6, 'max' => 20],
+            ['date_receipt', 'validateDate'],
             [['special_cod'], 'checkCod'],
         ];
     }
@@ -144,6 +145,18 @@ class SignupForm extends Model
         if ($start && $end) {
             if ($end != $start) {
                 $this->addError($attr, 'Некорректный код');
+            }
+        }
+    }
+
+    public function validateDate($attr) // date_receipt
+    {
+        $birth = strtotime($this->date_birth);
+        $receipt = strtotime($this->{$attr});
+
+        if ($birth && $receipt) {
+            if ($receipt < strtotime('+18 years', $birth)) {
+                $this->addError($attr, 'Некорректный формат даты');
             }
         }
     }

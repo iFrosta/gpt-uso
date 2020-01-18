@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'timeZone' => 'Europe/Astrakhan',
+//    'timeZone' => 'Europe/Astrakhan', выкл, так как на хостинге серверное время совпадает с местным
     'language'=>'ru',
     'sourceLanguage'=>'ru',
     'basePath' => dirname(__DIR__),
