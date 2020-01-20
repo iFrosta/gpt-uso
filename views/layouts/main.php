@@ -40,8 +40,21 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
+
+            //здесь должна была запись /test/index,
+            // но проблема - неопределённая переменная id_test во вьюхе "_displaytest"
+            ['label' => 'Пройти тест', 'url' => ['/test/display-test'], 'visible'=>Yii::$app->user->can('user')],
+
             ['label' => 'Работники', 'url' => ['/user/index'], 'visible'=>Yii::$app->user->can('admin')],
             ['label' => 'События', 'url' => ['/activity/index']],
+            [
+                'label' => 'Работа с тестами',
+                'items' => [
+                    ['label' => 'Список тестов', 'url' => ['/testing/test']],
+                    ['label' => 'Список вопросов', 'url' => ['/testing/question']],
+                    ['label' => 'Список ответов', 'url' => ['/testing/answer']],
+                ], 'visible'=>Yii::$app->user->can('admin')
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
             ) : (
