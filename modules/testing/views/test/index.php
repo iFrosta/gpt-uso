@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\testing\models\TestSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tests';
+$this->title = 'Тесты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="test-index">
