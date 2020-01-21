@@ -31,7 +31,7 @@ class DefaultController extends Controller
                     if (count(array_diff($answer, $data[$id])) == 0 && count(array_diff($data[$id], $answer)) == 0)
                         $correctAnswers++;
                 }
-            if ($correctAnswers == $countQuestions || $correctAnswers > ($countQuestions - 2))
+            if ($correctAnswers == $countQuestions || $correctAnswers > ($countQuestions * 0.8))
                 $message='Вы прошли тест.';
             else
                 $message='Вы провалили тест.';

@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\testing\models\Answer */
 
-$this->title = 'Update Answer: ' . $model->text;
-$this->params['breadcrumbs'][] = ['label' => 'Answers', 'url' => ['index']];
+$this->title = 'Редактирование ответа: ' . $model->text;
+$this->params['breadcrumbs'][] = ['label' => 'Ответы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->text, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="answer-update">
 
