@@ -65,12 +65,12 @@ class TestController extends Controller
      */
     public function actionIndex()
     {
-        $item = new TestForm();
-        return $this->render('index', [
-            'model' => $item
-        ]);
+//        $item = new TestForm();
+//        return $this->render('index', [
+//            'model' => $item
+//        ]);
 
-//        return $this->render('index');
+        return $this->render('index');
     }
 
     public function actionDisplayTest()
