@@ -17,7 +17,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Спиок работников';
+$this->title = 'Список работников';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
