@@ -35,6 +35,7 @@ use yii\base\Exception;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+
     public function behaviors()
     {
         return [TimestampBehavior::class,];
@@ -116,4 +117,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasOne(Position::class, ['id' => 'position_id']);
     }
+
+
+    
 }
