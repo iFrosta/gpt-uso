@@ -27,7 +27,7 @@ class UserController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['admin', 'user'],
                     ],
                 ],
             ],
@@ -65,15 +65,6 @@ class UserController extends Controller
 
         $model = new UpdateUserForm();
 
-//            $user->toArray(['username'])
-//            $user->toArray(['password'])
-//        );
-
-
-
-//        $model->updatePass($user);
-
-//        if ($model->load(Yii::$app->request->post()) && $model->updatePass($user)) {
         if ($model->load(Yii::$app->request->post()) && $model->updatePass()) {
             Yii::$app->session->setFlash('success', 'Изменения успешно сохранены');
         }
