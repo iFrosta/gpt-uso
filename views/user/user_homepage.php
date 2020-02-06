@@ -14,23 +14,24 @@ YiiAsset::register($this);
 
 <h1>Страница пользователя &nbsp; <?= Html::encode(Yii::$app->user->identity->username) ?></h1>
 
-<h3>Имя пользователя: &nbsp; <?= Html::encode(Yii::$app->user->identity->username) ?></h3>
+<h3><?= Html::encode(Yii::$app->user->identity->username) ?>, можете изменить пароль</h3>
 
 
+<div class="container">
 
-<div class="user-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <div class="col-lg-3">
 
-<!--    --><?//= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+        <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'password')->passwordInput() ?>
-    <?= $form->field($model, 'reenter_password')->passwordInput() ?>
+        <?= $form->field($model, 'password')->passwordInput(['autofocus' => true]) ?>
+        <?= $form->field($model, 'reenter_password')->passwordInput() ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Применить', ['class' => 'btn btn-success']) ?>
+        <div class="form-group">
+            <?= Html::submitButton('Применить', ['class' => 'btn btn-success']) ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
+
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>
