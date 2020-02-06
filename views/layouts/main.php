@@ -55,6 +55,10 @@ AppAsset::register($this);
                     ['label' => 'Список ответов', 'url' => ['/testing/answer']],
                 ], 'visible'=>Yii::$app->user->can('admin')
             ],
+            [
+                'label' => 'Страница ' . Yii::$app->user->identity->username,
+                'url' => ['/user/user_homepage?id=' . Yii::$app->user->id],
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
             ) : (
