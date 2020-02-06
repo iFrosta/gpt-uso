@@ -6,6 +6,7 @@ namespace app\controllers;
 
 use app\models\Activity;
 use app\models\forms\SignupForm;
+use app\models\forms\UpdateUserForm;
 use app\models\Position;
 use app\models\User;
 use Yii;
@@ -13,6 +14,7 @@ use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+
 
 class UserController extends Controller
 {
@@ -46,6 +48,38 @@ class UserController extends Controller
         return $this->render('index', [
             'provider' => $provider,
         ]);
+    }
+
+    public function actionUser_homepage()
+    {
+        /** @var User $user */
+        $user_id = Yii::$app->user->identity;
+
+        $provider = new ActiveDataProvider([
+            'query' => Activity::find()->where(['id' => $user_id]),
+            'pagination' => [
+                'validatePage' => false,
+            ],
+        ]);
+
+
+        $model = new UpdateUserForm();
+
+//            $user->toArray(['username'])
+//            $user->toArray(['password'])
+//        );
+
+
+
+//        $model->updatePass($user);
+
+//        if ($model->load(Yii::$app->request->post()) && $model->updatePass($user)) {
+        if ($model->load(Yii::$app->request->post()) && $model->updatePass()) {
+            Yii::$app->session->setFlash('success', 'Изменения успешно сохранены');
+        }
+
+        return $this->render('user_homepage', compact('model', 'provider'));
+
     }
 
     /**
