@@ -58,6 +58,7 @@ AppAsset::register($this);
             [
                 'label' => 'Страница ' . Yii::$app->user->identity->username,
                 'url' => ['/user/user_homepage?id=' . Yii::$app->user->id],
+                'visible'=>Yii::$app->user->can('user')
             ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
