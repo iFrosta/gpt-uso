@@ -118,6 +118,4 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasOne(Position::class, ['id' => 'position_id']);
     }
 
-
-    
 }
