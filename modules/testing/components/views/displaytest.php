@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -11,7 +12,7 @@ if ($test) {
 <?php
     $form = ActiveForm::begin([
         'id' => $id_form,
-        'action' => ['/testing'],
+        'action' => ['/testing'], //testing/default/index
         'enableAjaxValidation' => false,
         'enableClientValidation' => true,
 

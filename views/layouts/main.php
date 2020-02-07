@@ -41,9 +41,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
 
-            //здесь должна была запись /test/index,
-            // но проблема - неопределённая переменная id_test во вьюхе "_displaytest"
-            ['label' => 'Пройти тест', 'url' => ['/test/display-test'], 'visible'=>Yii::$app->user->can('user')],
+            ['label' => 'Пройти тест', 'url' => ['/test/index'], 'visible'=>Yii::$app->user->can('user')],
 
             ['label' => 'Работники', 'url' => ['/user/index'], 'visible'=>Yii::$app->user->can('admin')],
             ['label' => 'События', 'url' => ['/activity/index']],

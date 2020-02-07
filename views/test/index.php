@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'ТестКомпани';
+$this->title = 'Тест';
 ?>
 <div class="site-index">
         <?= $this->render('_displaytest', [

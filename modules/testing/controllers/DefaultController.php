@@ -42,5 +42,6 @@ class DefaultController extends Controller
             $data=['status'=>'false','message'=>'Ошибка в полученных данных!'];
         }
         return json_encode($data, JSON_UNESCAPED_UNICODE);
+//        return $this->redirect(['/user/result']);
     }
 }
