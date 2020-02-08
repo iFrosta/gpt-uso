@@ -54,9 +54,24 @@ AppAsset::register($this);
                 ], 'visible'=>Yii::$app->user->can('admin')
             ],
             [
-                'label' => 'Страница ' . Yii::$app->user->identity->username,
+                'label' => 'Личный кабинет',
                 'url' => ['/user/user_homepage?id=' . Yii::$app->user->id],
+                'visible'=>Yii::$app->user->can('user')
             ],
+
+//            Yii::$app->user->isGuest ? (
+//                ['label' => 'Личный кабинет', 'url' => ['/site/login']]
+//            ) : (
+//                '<li>'
+//                . Html::beginForm(['/user/user_homepage?id=' . Yii::$app->user->id], 'post')
+//                . Html::submitButton(
+//                    'Страница (' . Yii::$app->user->identity->username . ')',
+//                    ['class' => 'btn btn-link logout']
+//                )
+//                . Html::endForm()
+//                . '</li>'
+//            ),
+
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
             ) : (

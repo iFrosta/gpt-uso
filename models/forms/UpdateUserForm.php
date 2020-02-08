@@ -14,7 +14,7 @@ class UpdateUserForm extends Model
     {
         return [
             [['password', 'reenter_password'], 'string'],
-            [['password'], 'string', 'min' => 3, 'max' => 30],
+            [['password'], 'string', 'min' => 6, 'max' => 30],
             [['reenter_password'], 'compare', 'compareAttribute' => 'password', 'when' => function (UpdateUserForm $form) {
                 return !empty($form->password);
             }],
