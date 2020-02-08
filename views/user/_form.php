@@ -10,14 +10,18 @@ use yii\widgets\ActiveForm;
 /* @var $form ActiveForm */
 ?>
 
+
 <div class="user-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-    <?= $form->field($model, 'password')->passwordInput() ?>
-    <?= $form->field($model, 'special_cod')->textInput() ?>
+    <?php  //Отображаем поля только при СОЗДАНИИ нового работника
+    if (Yii::$app->request->pathInfo == 'user/create') {
+        echo $form->field($model, 'password')->passwordInput();
+        echo $form->field($model, 'special_cod')->textInput();
+    };
+    ?>
     <?= $form->field($model, 'first_name')->textInput() ?>
     <?= $form->field($model, 'last_name')->textInput() ?>
     <?= $form->field($model, 'third_name')->textInput() ?>
@@ -27,11 +31,11 @@ use yii\widgets\ActiveForm;
     // получаем все должности
     $users = Position::find()->all();
     // формируем массив, с ключем равным полю 'id' и значением равным полю 'title'
-    $items = ArrayHelper::map($users,'id','title');
+    $items = ArrayHelper::map($users, 'id', 'title');
     $params = [
         'prompt' => 'Укажите занимаемую должность'
     ];
-    echo $form->field($model, 'position_id')->dropDownList($items,$params);
+    echo $form->field($model, 'position_id')->dropDownList($items, $params);
     ?>
 
     <?= $form->field($model, 'date_birth')->textInput(['type' => 'date']) ?>
