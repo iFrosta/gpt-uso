@@ -68,6 +68,19 @@ class User extends ActiveRecord implements IdentityInterface
         return 'users';
     }
 
+    public function rules()
+    {
+        return [
+            [['username'], 'unique', 'targetClass' => User::class, 'targetAttribute' => 'username'],
+            [['username', 'first_name', 'last_name', 'third_name', 'telny_number',
+                'position_id', 'date_birth', 'date_receipt',], 'required'],
+            [['username', 'first_name', 'last_name', 'third_name', 'position_id'], 'string'],
+            [['telny_number'], 'unique', 'targetClass' => User::class, 'targetAttribute' => 'telny_number'],
+            [['username'], 'string', 'min' => 3],
+            ['date_receipt', 'validateDate'],
+        ];
+    }
+
     public static function findIdentity($id)
     {
         return self::findOne(['id' => $id]);
@@ -118,6 +131,15 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasOne(Position::class, ['id' => 'position_id']);
     }
 
+    public function validateDate($attr) // date_receipt
+    {
+        $birth = strtotime($this->date_birth);
+        $receipt = strtotime($this->{$attr});
 
-    
+        if ($birth && $receipt) {
+            if ($receipt < strtotime('+18 years', $birth)) {
+                $this->addError($attr, 'Некорректный формат даты');
+            }
+        }
+    }
 }

@@ -14,13 +14,12 @@ YiiAsset::register($this);
 
 <h1>Страница пользователя &nbsp; <?= Html::encode(Yii::$app->user->identity->username) ?></h1>
 
-<h3><?= Html::encode(Yii::$app->user->identity->username) ?>, можете изменить пароль</h3>
+<h3><?= Html::encode(Yii::$app->user->identity->username) ?>
+    , <?= Html::submitButton('можете изменить пароль', ['id' => 'changePass', 'class' => 'btn btn-primary btn-sm']) ?></h3>
 
 
 <div class="container">
-
-
-    <div class="col-lg-3">
+    <div id="changePassSlider" class="col-lg-3" style="display: none">
 
         <?php $form = ActiveForm::begin(); ?>
 
@@ -28,10 +27,14 @@ YiiAsset::register($this);
         <?= $form->field($model, 'reenter_password')->passwordInput() ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Применить', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Применить', ['id' => 'changedPass', 'class' => 'btn btn-success']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
 
     </div>
+
 </div>
+
+<?= $this->registerJsFile('../../web/js/changePassSlide.js') ?>
+

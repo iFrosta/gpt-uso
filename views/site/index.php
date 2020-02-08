@@ -29,7 +29,7 @@ use yii\helpers\Html;; ?>
                 <p>Раздел, в котором отображаются новые события</p>
 
                 <p>
-                    <?= Html::a('Перейти', ['/activity/index'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Перейти', ['/activity/index'], ['class' => 'btn btn-primary']) ?>
                 </p>
             </div>
             <div class="col-lg-3">
@@ -39,7 +39,7 @@ use yii\helpers\Html;; ?>
                 а также, после ознакомления прилегающей информации, сможет пройти тестирование</p>
 
                 <p>
-                    <?= Html::a('Перейти', ['create'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Перейти', ['create'], ['class' => 'btn btn-primary']) ?>
                 </p>
             </div>
             <div class="col-lg-3">
@@ -48,7 +48,7 @@ use yii\helpers\Html;; ?>
                 <p>В данном разделе представлены все документы сопряжённые с занимаемой должностью работника</p>
 
                 <p>
-                    <?= Html::a('Перейти', ['create'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Перейти', ['create'], ['class' => 'btn btn-primary']) ?>
                 </p>
             </div>
             <div class="col-lg-3">
@@ -58,7 +58,7 @@ use yii\helpers\Html;; ?>
                     и после ознакомления, возможность пройти тестирование</p>
 
                 <p>
-                    <?= Html::a('Перейти', ['create'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Перейти', ['create'], ['class' => 'btn btn-primary']) ?>
                 </p>
             </div>
         </div>
