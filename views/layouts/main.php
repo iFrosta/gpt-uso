@@ -102,7 +102,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; АФ ООО "Газпромтранс" <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+<!--        <p class="pull-right">--><?//= Yii::powered() ?><!--</p>-->
     </div>
 </footer>
 

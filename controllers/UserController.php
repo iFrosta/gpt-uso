@@ -108,8 +108,8 @@ class UserController extends Controller
             'id' => Yii::$app->user->id,
         ]);
 
-        // обновлять записи может только создатель или менеджер
-        if (Yii::$app->user->can('admin') || $item->id == Yii::$app->user->id) {
+        // обновлять записи может только admin
+        if (Yii::$app->user->can('admin')) {
             if ($item->load(Yii::$app->request->post()) && $item->validate()) {
                 if ($item->save()) {
                     return $this->redirect(['user/view', 'id' => $item->id]);

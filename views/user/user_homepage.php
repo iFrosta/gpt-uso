@@ -15,7 +15,7 @@ YiiAsset::register($this);
 <h1>Страница пользователя &nbsp; <?= Html::encode(Yii::$app->user->identity->username) ?></h1>
 
 <h3><?= Html::encode(Yii::$app->user->identity->username) ?>
-    , <?= Html::submitButton('можете изменить пароль', ['id' => 'changePass', 'class' => 'btn btn-success']) ?></h3>
+    , <?= Html::submitButton('можете изменить пароль', ['id' => 'changePass', 'class' => 'btn btn-primary btn-sm']) ?></h3>
 
 
 <div class="container">
