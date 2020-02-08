@@ -40,6 +40,8 @@ class UpdateUserForm extends Model
         if (!empty($this->password) &&
             $this->password === $this->reenter_password) {
             $user->password = $this->password;
+        } else {
+            return false;
         }
         return $user->save();
     }
