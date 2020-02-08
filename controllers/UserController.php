@@ -24,10 +24,11 @@ class UserController extends Controller
             'access' => [
                 // доступ только для админов
                 'class' => AccessControl::class,
+                'only' => ['index', 'view', 'create', 'update', 'delete'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['admin', 'user'],
+                        'roles' => ['admin'],
                     ],
                 ],
             ],
