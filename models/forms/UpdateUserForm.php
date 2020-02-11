@@ -43,7 +43,7 @@ class UpdateUserForm extends Model
         } else {
             return false;
         }
-        return $user->save();
+        return $user->save(false);
     }
 
 }

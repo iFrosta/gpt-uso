@@ -68,6 +68,8 @@ class UserController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->updatePass()) {
             Yii::$app->session->setFlash('success', 'Изменения успешно сохранены');
+        } else if ($model->load(Yii::$app->request->post()) && !$model->updatePass()) {
+            Yii::$app->session->setFlash('warning', 'Проверьте правильность заполнения');
         }
 
         return $this->render('user_homepage', compact('model', 'provider'));
