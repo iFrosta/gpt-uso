@@ -72,7 +72,7 @@ class SiteController extends Controller
     {
         $user = User::findIdentity(\Yii::$app->user->id);
         if (!Yii::$app->user->isGuest) {
-            $time=date('Y-m-d H-m-s');
+            $time=time();
             $user->status = $time;
             $user->save(false);
         }
