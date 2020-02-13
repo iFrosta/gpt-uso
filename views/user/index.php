@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ],
     'date_birth:date',
     'date_receipt:date',
-    'status',
+    'status:datetime',
     [
         'class' => ActionColumn::class,
         'header' => 'Операции',

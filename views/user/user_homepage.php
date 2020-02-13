@@ -12,10 +12,10 @@ YiiAsset::register($this);
 
 ?>
 
-<h1>Страница пользователя &nbsp; <?= Html::encode(Yii::$app->user->identity->username) ?></h1>
+<h1>Страница пользователя  <u><?= Html::encode(Yii::$app->user->identity->username)?></u></h1>
 
-<h3><?= Html::encode(Yii::$app->user->identity->username) ?>
-    , <?= Html::submitButton('можете изменить пароль', ['id' => 'changePass', 'class' => 'btn btn-primary btn-sm']) ?></h3>
+<h3><?= Html::encode(Yii::$app->user->identity->first_name)?>,
+    <?= Html::submitButton('можете изменить пароль', ['id' => 'changePass', 'class' => 'btn btn-primary btn-sm']) ?></h3>
 
 
 <div class="container">
@@ -34,6 +34,12 @@ YiiAsset::register($this);
 
     </div>
 
+</div>
+
+<div>
+    <h4>
+        Посмотреть результаты теста можно по этой <?= Html::a('ссылке', ['result/index'], ['class' => 'btn btn-info'])?>
+    </h4>
 </div>
 
 <?= $this->registerJsFile('../../web/js/changePassSlide.js') ?>
