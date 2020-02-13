@@ -19,6 +19,9 @@ use yii\db\ActiveRecord;
  * @property int $attempts
  * @property int $quantity
  * @property bool $status
+ *
+ * @property-read User $user
+ * @property-read Test $test
  */
 class Result extends ActiveRecord
 {
@@ -53,11 +56,11 @@ class Result extends ActiveRecord
 
     public function getUser()
     {
-        return $this->hasMany(User::class, ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
     public function getTest()
     {
-        return $this->hasMany(Test::class, ['id' => 'test_id']);
+        return $this->hasOne(Test::class, ['id' => 'test_id']);
     }
 }

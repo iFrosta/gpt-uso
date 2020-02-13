@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\forms\SignupForm;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -65,6 +66,17 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function afterAction($action, $result)
+    {
+        $user = User::findIdentity(\Yii::$app->user->id);
+        if (!Yii::$app->user->isGuest) {
+            $time=date('Y-m-d H-m-s');
+            $user->status = $time;
+            $user->save(false);
+        }
+        return parent::afterAction($action, $result);
     }
 
     /**
