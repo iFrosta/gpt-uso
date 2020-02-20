@@ -3,20 +3,14 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Тест';
-?>
 
-<div id="time">Time: </div>
+use yii\base\InvalidConfigException; ?>
 
-<div class="site-index">
-        <?= $this->render('_displaytest', [
-            'model' => $model,
-        ]) ?>
-</div>
+            <?= $this->render('_displaytest', [
+                'model' => $model,
+            ]) ?>
 
-<script>
-    setInterval(function(){
-        $.ajax({url: "../tim.php", success: function(response){
-                $('#time').html(response)
-            }});
-    }, 1000);
-</script>
+<?php try {
+    Yii::$app->view->registerJsFile('../../web/js/getTime.js');
+} catch (InvalidConfigException $e) {
+} ?>
