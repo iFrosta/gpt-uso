@@ -1,4 +1,5 @@
 <?php
+
 namespace app\modules\testing\models;
 
 use Yii;
@@ -33,10 +34,10 @@ class TestForm extends Model
     {
         $validator = new NumberValidator();
         if (is_array($this->$attribute))
-            foreach ($this->$attribute as $id=>$question) {
+            foreach ($this->$attribute as $id => $question) {
                 if (is_array($question)) {
-                    foreach ($question as $anser) {
-                        if (!$validator->validate($anser, $error)) {
+                    foreach ($question as $answer) {
+                        if (!$validator->validate($answer, $error)) {
                             $this->addError($attribute, 'В списке не целые числа.');
                         }
                     }
@@ -50,7 +51,8 @@ class TestForm extends Model
 
     static public function loadTest($id)
     {
-        $sql="SELECT 
+        $sql =
+            "SELECT 
                 tests.id AS id, 
                 tests.name AS name, 
                 questions.id AS id_question, 
@@ -64,19 +66,18 @@ class TestForm extends Model
                 LEFT JOIN questions ON questions_tests.id_question=questions.id 
                 LEFT JOIN answers ON answers.id_question=questions.id 
             WHERE tests.id=:test_id";
-        $result=Yii::$app->db->createCommand($sql)
-            ->bindValue(':test_id',$id)
+        $result = Yii::$app->db->createCommand($sql)
+            ->bindValue(':test_id', $id)
             ->queryAll();
         if ($result) {
-            $data=[];
-            foreach ($result as $key=>$res)
-            {
-                $data['id']=$res['id'];
-                $data['name']=$res['name'];
-                $data['questions'][$res['id_question']]['title']=$res['title'];
-                $data['questions'][$res['id_question']]['type']=$res['type_question'];
-                $data['questions'][$res['id_question']]['answers'][$res['id_answer']]['text']=$res['text'];
-                $data['questions'][$res['id_question']]['answers'][$res['id_answer']]['type']=$res['type_answer'];
+            $data = [];
+            foreach ($result as $key => $res) {
+                $data['id'] = $res['id'];
+                $data['name'] = $res['name'];
+                $data['questions'][$res['id_question']]['title'] = $res['title'];
+                $data['questions'][$res['id_question']]['type'] = $res['type_question'];
+                $data['questions'][$res['id_question']]['answers'][$res['id_answer']]['text'] = $res['text'];
+                $data['questions'][$res['id_question']]['answers'][$res['id_answer']]['type'] = $res['type_answer'];
             }
             return $data;
         } else {
@@ -86,7 +87,7 @@ class TestForm extends Model
 
     static public function getCorrectAnswers($id)
     {
-        $sql="SELECT 
+        $sql = "SELECT 
                 questions.id AS id_question, 
                 questions.type AS type_question, 
                 answers.id AS id_answer 
@@ -94,18 +95,18 @@ class TestForm extends Model
                 LEFT JOIN questions ON questions_tests.id_question=questions.id 
                 LEFT JOIN answers ON answers.id_question=questions.id 
             WHERE questions_tests.id_test=:test_id AND answers.type='right'";
-        $result=Yii::$app->db->createCommand($sql)
-            ->bindValue(':test_id',$id)
+        $result = Yii::$app->db->createCommand($sql)
+            ->bindValue(':test_id', $id)
             ->queryAll();
         if ($result) {
-            $data=[];
-            foreach ($result as $res)
-            {
-                $data[$res['id_question']][]=$res['id_answer'];
+            $data = [];
+            foreach ($result as $res) {
+                $data[$res['id_question']][] = $res['id_answer'];
             }
             return $data;
         } else {
             return false;
         }
     }
+
 }

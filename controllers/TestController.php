@@ -79,4 +79,11 @@ class TestController extends Controller
             'id_test' => Yii::$app->request->post('id_test'),
         ]);
     }
+
+    public function actionTestInfo()
+    {
+        return $this->render('_testinfo', [
+            'id_test' => Yii::$app->request->post('id_test'),
+        ]);
+    }
 }
