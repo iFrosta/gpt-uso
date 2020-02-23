@@ -63,7 +63,7 @@ class Result extends ActiveRecord
             'date_test' => 'Дата прохождения',
             'attempts' => 'Количество попыток',
             'quantity' => 'Количество баллов',
-            'status' => 'Результат',
+            'status' => 'Результат(сдал?)',
         ];
     }
 
