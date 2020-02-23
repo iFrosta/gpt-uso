@@ -1,11 +1,10 @@
 <?php
+
 namespace app\modules\testing\components;
 
+use app\models\Result;
 use app\modules\testing\models\TestForm;
-use Yii;
-use app\modules\testing\models\Test;
 use yii\base\Widget;
-use yii\helpers\Html;
 
 class DisplayTest extends Widget
 {
@@ -21,10 +20,12 @@ class DisplayTest extends Widget
     public function run()
     {
         $model = new TestForm();
-        return $this->render('displaytest',[
-            'model'=>$model,
-            'test'=>TestForm::loadTest($this->id),
-            'id'=>$this->id
+        return $this->render('displaytest', [
+            'model' => $model,
+            'test' => TestForm::loadTest($this->id),
+            'id' => $this->id,
+            Result::ifRecord($this->id),
+            'res' => Result::getUserTestStatus($this->id),
         ]);
     }
 }
