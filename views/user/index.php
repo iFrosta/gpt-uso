@@ -52,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
     [
         'class' => ActionColumn::class,
         'header' => 'Операции',
+        'contentOptions' => ['style' => 'text-align:center']
     ],
     ],
 ])?>
