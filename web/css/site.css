@@ -114,15 +114,19 @@ a.desc:after {
     outline: none;
 }
 
+.main-body {
+    margin-top: 20px;
+}
+
+.text-left h1 {
+    margin-top: 0;
+}
+
 .testInfoBlock {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: fixed;
-    padding-left: 50px;
     background-color: rgba(79, 178, 246, 0.18);
-    top: 100px;
-    right: 50px;
 }
 
 #quantityPoints {
