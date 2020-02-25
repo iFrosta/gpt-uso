@@ -18,8 +18,35 @@ $noTest2 = Html::tag('p', "Тест не пройден.");
 if ($test) {
     $id_form = 'form_answers_' . uniqid();
     ?>
-    <div class="container">
-        <div class="site-index col-lg-8">
+    <div class="container main-body">
+
+        <div class="testInfoBlock col-lg-3">
+            <div class="timeWindow">
+                <span id="time1"></span>
+                <span id="time"></span>
+            </div>
+            <br>
+
+            <div>
+                <?php
+                if ($attempts == 1 || null) {
+                    echo Html::tag('span', $noAttempts, ['id' => 'testNotComplete']);
+                } elseif ($status == 0 || null) {
+                    echo Html::tag('span', $testInfo, ['id' => 'testNotComplete']);
+                    echo Html::tag('span', $quantity, ['id' => 'quantityPoints']);
+                    echo Html::tag('span', $noTest2, ['id' => 'testNotComplete']);
+                    echo Html::tag('span', "Попытка №&nbsp;",
+                            ['style' => 'color: #00cc00; font-size: 1.4em']) . '' .
+                        Html::tag('span', $attempts, ['id' => 'numberTestNotComplete']);
+                } else {
+                    echo Html::tag('p', 'Тест пройден.', ['id' => 'testNotComplete',
+                        'style' => 'color: #00cc00; font-size: 2.4em']);
+                }
+                ?>
+            </div>
+        </div>
+
+        <div class="site-index col-lg-9">
             <div class="text-left">
                 <h1><?= $test['name'] ?></h1>
             </div>
@@ -66,33 +93,6 @@ if ($test) {
 
         </div>
 
-        <div class="col-lg-1"></div>
-
-        <div class="testInfoBlock col-lg-3">
-            <div class="timeWindow">
-                <span id="time1"></span>
-                <span id="time"></span>
-            </div>
-            <br>
-
-            <div>
-                <?php
-                if ($attempts == 1 || null) {
-                    echo Html::tag('span', $noAttempts, ['id' => 'testNotComplete']);
-                } elseif ($status == 0 || null) {
-                    echo Html::tag('span', $testInfo, ['id' => 'testNotComplete']);
-                    echo Html::tag('span', $quantity, ['id' => 'quantityPoints']);
-                    echo Html::tag('span', $noTest2, ['id' => 'testNotComplete']);
-                    echo Html::tag('span', "Попытка №&nbsp;",
-                            ['style' => 'color: #00cc00; font-size: 1.4em']) . '' .
-                        Html::tag('span', $attempts, ['id' => 'numberTestNotComplete']);
-                } else {
-                    echo Html::tag('p', 'Тест пройден.', ['id' => 'testNotComplete',
-                        'style' => 'color: #00cc00; font-size: 2.4em']);
-                }
-                ?>
-            </div>
-        </div>
     </div>
 
     <?php
