@@ -13,6 +13,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@storage'   => '/web/uploads',
     ],
     'modules' => [
         'testing' => [
@@ -71,7 +72,7 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-        'allowedIPs' => ['*'],
+//        'allowedIPs' => ['*'],
     ];
 
     $config['bootstrap'][] = 'gii';

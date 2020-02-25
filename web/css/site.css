@@ -96,9 +96,9 @@ a.desc:after {
     border: none;
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .nav li > form > button.logout {
-        display:block;
+        display: block;
         text-align: left;
         width: 100%;
         padding: 10px 15px;
@@ -113,3 +113,44 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.main-body {
+    margin-top: 20px;
+}
+
+.text-left h1 {
+    margin-top: 0;
+}
+
+.testInfoBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(79, 178, 246, 0.18);
+}
+
+#quantityPoints {
+    color: #cc0000;
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+#testNotComplete {
+    color: #cc0000;
+    font-size: 1.5em;
+    font-style: italic;
+}
+
+#numberTestNotComplete {
+    color: #00cc00;
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+#time {
+    color: #0b72b8;
+    font-weight: bolder;
+    font-size: 2.5em;
+}
+
+
