@@ -44,10 +44,18 @@ use yii\widgets\DetailView;
         ],
         //'id',
         [
-            'label' => 'Кто проходил',
+            'label' => 'Фамилия',
             'attribute' => 'user_id', // авто-подключение зависимостей
             'value' => function (Result $model) {
                 return $model->user->last_name;
+            }
+            // $model->user->last_name
+        ],
+        [
+            'label' => 'Имя',
+            'attribute' => 'user_id', // авто-подключение зависимостей
+            'value' => function (Result $model) {
+                return $model->user->first_name;
             }
             // $model->user->last_name
         ],

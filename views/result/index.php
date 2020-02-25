@@ -14,7 +14,7 @@ use yii\helpers\Html;
 $columns = [
 
     [
-        // activity.id - пример перезаписи значения
+        // user.id - пример перезаписи значения
         'label' => 'Порядковый номер',
         'value' => function (Result $model) {
             return "# {$model->id}";
@@ -38,35 +38,43 @@ $columns = [
         // $model->user->last_name
     ],
     'date_test:datetime',
-    'attempts',
-    'quantity',
-    'status:boolean',
-//    [
-//
-//        'attribute' => 'status',
-//
-//        'format' => 'raw',
-//
-//        'value' => function ($model, $index, $widget) {
-//
-//            return Html::checkbox('status', $model->status, ['value' => $index, 'disabled' => true]);
-//
-//        },
-//
-//    ],
-
+//    'attempts',
+    [
+        'attribute' => 'attempts',
+        'contentOptions' => ['style' => 'text-align:center']
+    ],
+//    'quantity',
+    [
+        'attribute' => 'quantity',
+        'contentOptions' => ['style' => 'text-align:center']
+    ],
+    [
+        'attribute' => 'status',
+        'format' => 'boolean',
+//        'options' => ['style' => 'width: 65px; color:blue'],
+        'contentOptions' => function (Result $model){
+            if ($model->status == 1) {
+                return ['style' => 'background-color:#1fc61fd1; font-weight:bold; text-align:center'];
+            } else {
+                return ['style' => 'background-color:#f31d1dd4; font-weight:bold; text-align:center'];
+            }
+        }
+    ],
 ];
 
 if (Yii::$app->user->can('admin')) {
     $columns[] = [
         'class' => ActionColumn::class,
         'header' => 'Операции',
+        'template' => '{view}',
+        'contentOptions' => ['style' => 'text-align:center']
     ];
 } else if (Yii::$app->user->can('user')) {
     $columns[] = [
         'class' => ActionColumn::class,
         'header' => 'Операции',
-        'template' => '{view}'
+        'template' => '{view}',
+        'contentOptions' => ['style' => 'text-align:center']
     ];
 }
 

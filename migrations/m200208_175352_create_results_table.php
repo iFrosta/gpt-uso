@@ -15,9 +15,11 @@ class m200208_175352_create_results_table extends Migration
         $this->createTable('results', [
             'id' => $this->primaryKey(),
             'test_id' => $this->integer()->comment('Номер теста'),
-            'user_id' => $this->integer()->comment('Создатель события'),
-            'date_test' => $this->string()->comment('Дата тестирования'),
+            'user_id' => $this->integer()->comment('Кто проходил'),
             'attempts' => $this->integer()->comment('Количество попыток'),
+            'date_test' => $this->integer()->comment('Дата тестирования'),
+            'created_at' => $this->integer(),
+            'updated_at' => $this->integer(),
             'quantity' => $this->integer()->comment('Количество баллов'),
             'status' => $this->boolean()->defaultValue(0)->comment('Результат'),
         ]);

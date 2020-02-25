@@ -128,7 +128,12 @@ class UserController extends Controller
 
     public function actionDelete(int $id)
     {
-        $this->findModel($id)->delete();
+       $item = $this->findModel($id);
+       if ($item->id == Yii::$app->user->id) {
+           return 'Удаление собственной записи невозможно';
+       } else {
+           $this->findModel($id)->delete();
+       }
 
         return $this->redirect(['index']);
     }
