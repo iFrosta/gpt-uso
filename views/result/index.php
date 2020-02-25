@@ -54,9 +54,9 @@ $columns = [
 //        'options' => ['style' => 'width: 65px; color:blue'],
         'contentOptions' => function (Result $model){
             if ($model->status == 1) {
-                return ['style' => 'background-color:#27e327ad; font-weight:bold; text-align:center'];
+                return ['style' => 'background-color:#1fc61fd1; font-weight:bold; text-align:center'];
             } else {
-                return ['style' => 'background-color:#fa000073; font-weight:bold; text-align:center'];
+                return ['style' => 'background-color:#f31d1dd4; font-weight:bold; text-align:center'];
             }
         }
     ],
